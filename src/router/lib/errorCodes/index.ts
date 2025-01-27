@@ -1,8 +1,6 @@
-import Router from "@koa/router";
-
-export const error500 = (ctx: Router.RouterContext) => {
-  ctx.status = 500;
-  ctx.body = { error: "Internal Server Error" };
-
-  return ctx;
+export const error500 = () => {
+  return {
+    status: 500,
+    body: { error: "Internal ServerError" },
+  };
 };
