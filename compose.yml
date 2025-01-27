@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/node/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    command: /bin/sh -c "yarn install && yarn dev"
+  mongodb:
+    build:
+      context: .
+      dockerfile: docker/mongodb/Dockerfile
+    ports:
+      - "28017:28017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
