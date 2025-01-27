@@ -1539,6 +1539,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@graphql-tools/utils@npm:^10.7.2":
+  version: 10.7.2
+  resolution: "@graphql-tools/utils@npm:10.7.2"
+  dependencies:
+    "@graphql-typed-document-node/core": "npm:^3.1.1"
+    cross-inspect: "npm:1.0.1"
+    dset: "npm:^3.1.4"
+    tslib: "npm:^2.4.0"
+  peerDependencies:
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: 10/b4725b081e5ff5c1441036db76ce907a6fe9b4c94aa9ceb070f75541b2297c3cccaa182f91d214f9abe6d89df33d8df51e055afbc4e382b01e8d8fb7c2f6edf6
+  languageName: node
+  linkType: hard
+
+"@graphql-typed-document-node/core@npm:^3.1.1":
+  version: 3.2.0
+  resolution: "@graphql-typed-document-node/core@npm:3.2.0"
+  peerDependencies:
+    graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+  checksum: 10/fa44443accd28c8cf4cb96aaaf39d144a22e8b091b13366843f4e97d19c7bfeaf609ce3c7603a4aeffe385081eaf8ea245d078633a7324c11c5ec4b2011bb76d
+  languageName: node
+  linkType: hard
+
 "@hapi/bourne@npm:^3.0.0":
   version: 3.0.0
   resolution: "@hapi/bourne@npm:3.0.0"
@@ -2206,7 +2229,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/koa@npm:*, @types/koa@npm:^2":
+"@types/koa-mount@npm:^4":
+  version: 4.0.5
+  resolution: "@types/koa-mount@npm:4.0.5"
+  dependencies:
+    "@types/koa": "npm:*"
+  checksum: 10/2b794f618b44e5a6810a829fd6fc29c17dd6b7adde81d26f270215197c01184434922db7078502947f48144344471129f533a3db2b0d86b836c60fddc32e2a3c
+  languageName: node
+  linkType: hard
+
+"@types/koa@npm:*, @types/koa@npm:^2, @types/koa@npm:^2.13.4":
   version: 2.15.0
   resolution: "@types/koa@npm:2.15.0"
   dependencies:
@@ -2490,7 +2522,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"accepts@npm:^1.3.5":
+"accepts@npm:^1.3.5, accepts@npm:^1.3.7":
   version: 1.3.8
   resolution: "accepts@npm:1.3.8"
   dependencies:
@@ -3103,6 +3135,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-inspect@npm:1.0.1":
+  version: 1.0.1
+  resolution: "cross-inspect@npm:1.0.1"
+  dependencies:
+    tslib: "npm:^2.4.0"
+  checksum: 10/7c1e02e0a9670b62416a3ea1df7ae880fdad3aa0a857de8932c4e5f8acd71298c7e3db9da8e9da603f5692cd1879938f5e72e34a9f5d1345987bef656d117fc1
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
   version: 7.0.6
   resolution: "cross-spawn@npm:7.0.6"
@@ -3114,7 +3155,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:4.x, debug@npm:^4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4":
+"debug@npm:4, debug@npm:4.x, debug@npm:^4, debug@npm:^4.0.1, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4":
   version: 4.4.0
   resolution: "debug@npm:4.4.0"
   dependencies:
@@ -3216,6 +3257,13 @@ __metadata:
   dependencies:
     esutils: "npm:^2.0.2"
   checksum: 10/b4b28f1df5c563f7d876e7461254a4597b8cabe915abe94d7c5d1633fed263fcf9a85e8d3836591fc2d040108e822b0d32758e5ec1fe31c590dc7e08086e3e48
+  languageName: node
+  linkType: hard
+
+"dset@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "dset@npm:3.1.4"
+  checksum: 10/6268c9e2049c8effe6e5a1952f02826e8e32468b5ced781f15f8f3b1c290da37626246fec014fbdd1503413f981dff6abd8a4c718ec9952fd45fccb6ac9de43f
   languageName: node
   linkType: hard
 
@@ -3624,6 +3672,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"express-graphql@npm:0.12.0":
+  version: 0.12.0
+  resolution: "express-graphql@npm:0.12.0"
+  dependencies:
+    accepts: "npm:^1.3.7"
+    content-type: "npm:^1.0.4"
+    http-errors: "npm:1.8.0"
+    raw-body: "npm:^2.4.1"
+  peerDependencies:
+    graphql: ^14.7.0 || ^15.3.0
+  checksum: 10/da0ddccc4446ac80f9e85d949dfba6ca2bfccb320668f4dcf0df3fa46c1b0f21aa99f470d64e6dd70fd2a13bfbeeee2c82d0f0bb55a110bb2eac4ea5b9f0127c
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -3946,6 +4008,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"graphql@npm:^16.10.0":
+  version: 16.10.0
+  resolution: "graphql@npm:16.10.0"
+  checksum: 10/d42cf81ddcf3a61dfb213217576bf33c326f15b02c4cee369b373dc74100cbdcdc4479b3b797e79b654dabd8fddf50ef65ff75420e9ce5596c02e21f24c9126a
+  languageName: node
+  linkType: hard
+
 "has-flag@npm:^3.0.0":
   version: 3.0.0
   resolution: "has-flag@npm:3.0.0"
@@ -4009,6 +4078,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"http-errors@npm:1.8.0":
+  version: 1.8.0
+  resolution: "http-errors@npm:1.8.0"
+  dependencies:
+    depd: "npm:~1.1.2"
+    inherits: "npm:2.0.4"
+    setprototypeof: "npm:1.2.0"
+    statuses: "npm:>= 1.5.0 < 2"
+    toidentifier: "npm:1.0.0"
+  checksum: 10/eec06bf53369432ad98eb296604f961dd0405fce7f01f7159186ab44f732fb538007428d043472554af689d06892b7764defe61ec7134a64827f91ff72f18057
+  languageName: node
+  linkType: hard
+
 "http-errors@npm:2.0.0, http-errors@npm:^2.0.0":
   version: 2.0.0
   resolution: "http-errors@npm:2.0.0"
@@ -4022,7 +4104,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"http-errors@npm:^1.6.3, http-errors@npm:~1.8.0":
+"http-errors@npm:^1.6.3, http-errors@npm:^1.7.3, http-errors@npm:~1.8.0":
   version: 1.8.1
   resolution: "http-errors@npm:1.8.1"
   dependencies:
@@ -4986,6 +5068,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"koa-graphql@npm:^0.12.0":
+  version: 0.12.0
+  resolution: "koa-graphql@npm:0.12.0"
+  dependencies:
+    "@types/koa": "npm:^2.13.4"
+    express-graphql: "npm:0.12.0"
+    http-errors: "npm:^1.7.3"
+  peerDependencies:
+    graphql: ^14.7.0 || ^15.3.0
+  checksum: 10/a90ae22e5d7d38a71f2cb1715aafda30dfb68ac227e8f04a0805c0f23871c6e8146aa20d18c74677616acfe8bc9c7196fc6dc21106a0da032b7bf5abf8ceb6ef
+  languageName: node
+  linkType: hard
+
 "koa-jwt@npm:^4.0.4":
   version: 4.0.4
   resolution: "koa-jwt@npm:4.0.4"
@@ -4994,6 +5089,16 @@ __metadata:
     koa-unless: "npm:^1.0.7"
     p-any: "npm:^2.1.0"
   checksum: 10/1b182c8f60bf222690ec28c05ae16e3c05324f9576f08263a38027da828cdf21635bca90c0e6c8d0e3e502cb6748dd626758354f9661d240af51a993190104b7
+  languageName: node
+  linkType: hard
+
+"koa-mount@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "koa-mount@npm:4.0.0"
+  dependencies:
+    debug: "npm:^4.0.1"
+    koa-compose: "npm:^4.1.0"
+  checksum: 10/c7e8c5cca4d2ccc4742e63c81b86b44f0290075148897b5d633acdd137e90f554c60c232fbc62e843eaedb913b67c5a49367c1142e290b8cfd9c28eb4a0480ec
   languageName: node
   linkType: hard
 
@@ -5899,7 +6004,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"raw-body@npm:^2.3.3":
+"raw-body@npm:^2.3.3, raw-body@npm:^2.4.1":
   version: 2.5.2
   resolution: "raw-body@npm:2.5.2"
   dependencies:
@@ -6501,6 +6606,7 @@ __metadata:
     "@babel/core": "npm:7.26.0"
     "@babel/preset-env": "npm:7.26.0"
     "@babel/preset-typescript": "npm:7.26.0"
+    "@graphql-tools/utils": "npm:^10.7.2"
     "@jest/globals": "npm:29.7.0"
     "@koa/router": "npm:^13.1.0"
     "@tsconfig/node20": "npm:20.1.4"
@@ -6508,6 +6614,7 @@ __metadata:
     "@types/jsonwebtoken": "npm:^9"
     "@types/koa": "npm:^2"
     "@types/koa-bodyparser": "npm:^4"
+    "@types/koa-mount": "npm:^4"
     "@types/koa__router": "npm:^12.0.4"
     "@types/node": "npm:20.17.12"
     "@types/ws": "npm:^8"
@@ -6516,11 +6623,14 @@ __metadata:
     esbuild: "npm:0.21.3"
     eslint: "npm:8.57.1"
     eslint-config-prettier: "npm:9.1.0"
+    graphql: "npm:^16.10.0"
     jest: "npm:29.7.0"
     jsonwebtoken: "npm:^9.0.2"
     koa: "npm:^2.15.3"
     koa-bodyparser: "npm:^4.4.1"
+    koa-graphql: "npm:^0.12.0"
     koa-jwt: "npm:^4.0.4"
+    koa-mount: "npm:^4.0.0"
     mongodb: "npm:6.12.0"
     mongoose: "npm:8.9.5"
     nodemon: "npm:3.1.9"
@@ -6545,6 +6655,13 @@ __metadata:
   dependencies:
     is-number: "npm:^7.0.0"
   checksum: 10/10dda13571e1f5ad37546827e9b6d4252d2e0bc176c24a101252153ef435d83696e2557fe128c4678e4e78f5f01e83711c703eef9814eb12dab028580d45980a
+  languageName: node
+  linkType: hard
+
+"toidentifier@npm:1.0.0":
+  version: 1.0.0
+  resolution: "toidentifier@npm:1.0.0"
+  checksum: 10/199e6bfca1531d49b3506cff02353d53ec987c9ee10ee272ca6484ed97f1fc10fb77c6c009079ca16d5c5be4a10378178c3cacdb41ce9ec954c3297c74c6053e
   languageName: node
   linkType: hard
 
@@ -6579,6 +6696,13 @@ __metadata:
   peerDependencies:
     typescript: ">=4.2.0"
   checksum: 10/713c51e7392323305bd4867422ba130fbf70873ef6edbf80ea6d7e9c8f41eeeb13e40e8e7fe7cd321d74e4864777329797077268c9f570464303a1723f1eed39
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.4.0":
+  version: 2.8.1
+  resolution: "tslib@npm:2.8.1"
+  checksum: 10/3e2e043d5c2316461cb54e5c7fe02c30ef6dccb3384717ca22ae5c6b5bc95232a6241df19c622d9c73b809bea33b187f6dbc73030963e29950c2141bc32a79f7
   languageName: node
   linkType: hard
 

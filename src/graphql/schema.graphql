@@ -1,0 +1,17 @@
+# The @auth directive is used to mark fields that require authentication
+# When applied to a field, it ensures the user is authenticated before accessing that field
+directive @auth on FIELD_DEFINITION
+
+type User {
+  username: String!
+  authField: String! @auth
+}
+
+type AuthThings {
+  hidden: String!
+}
+
+type Query {
+  getUser: User!
+  getAuthThings: AuthThings! @auth
+}

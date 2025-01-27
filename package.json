@@ -14,7 +14,7 @@
   "author": "Matthew Gould <matt@saowapan.com>",
   "license": "MIT",
   "scripts": {
-    "bundle": "rimraf dist && esbuild --outdir=dist --sourcemap --bundle --platform=node --target=node23.0.0 ./src/index.ts",
+    "bundle": "rimraf dist && esbuild --outdir=dist --sourcemap --bundle --platform=node --target=node23.0.0 ./src/index.ts  && mkdir -p ./dist && cp ./src/graphql/schema.graphql ./dist/",
     "compile": "tsc",
     "compile:watch": "tsc -w",
     "dev": "nodemon --watch src --watch test --ext ts,json --exec 'yarn bundle && yarn start'",
@@ -37,6 +37,7 @@
     "@types/jsonwebtoken": "^9",
     "@types/koa": "^2",
     "@types/koa-bodyparser": "^4",
+    "@types/koa-mount": "^4",
     "@types/koa__router": "^12.0.4",
     "@types/node": "20.17.12",
     "@types/ws": "^8",
@@ -53,11 +54,15 @@
   },
   "packageManager": "yarn@4.2.2",
   "dependencies": {
+    "@graphql-tools/utils": "^10.7.2",
     "@koa/router": "^13.1.0",
+    "graphql": "^16.10.0",
     "jsonwebtoken": "^9.0.2",
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
+    "koa-graphql": "^0.12.0",
     "koa-jwt": "^4.0.4",
+    "koa-mount": "^4.0.0",
     "mongodb": "6.12.0",
     "mongoose": "8.9.5"
   }
