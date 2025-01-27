@@ -7,7 +7,7 @@ function createSchemaWithDirectives(schema: GraphQLSchema): GraphQLSchema {
   return mapSchema(schema, {
     [MapperKind["OBJECT_FIELD"]]: (fieldConfig, _fieldName, _typeName) => {
       const authDirective = getDirective(schema, fieldConfig, "auth")?.[0];
-
+      console.log("authDirective", authDirective);
       if (authDirective) {
         const { resolve: originalResolve = defaultFieldResolver } = fieldConfig;
 

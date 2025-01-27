@@ -4,7 +4,7 @@ import { isKoaError } from "src/lib/isKoaError";
 import { JWT_SECRET } from "src/lib/jwt";
 
 const jwtAuthentication = jwt({ secret: JWT_SECRET }).unless({
-  path: [/^\/auth/],
+  path: [/^\/auth/, /^\/graphql/],
 });
 
 export const jwtErrorHandler: Router.Middleware = async (ctx, next) => {

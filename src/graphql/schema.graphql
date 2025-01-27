@@ -12,6 +12,6 @@ type AuthThings {
 }
 
 type Query {
-  getUser: User!
+  getUser(id: ID!): User!
   getAuthThings: AuthThings! @auth
 }

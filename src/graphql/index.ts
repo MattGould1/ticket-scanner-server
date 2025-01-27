@@ -5,6 +5,7 @@ import { graphqlHTTP } from "koa-graphql";
 import createSchemaWithDirectives from "./lib/createSchemaWithDirectives";
 import Koa from "koa";
 import jwtAuthentication from "./middleware/jwtAuthentication";
+import resolvers from "./resolvers";
 
 const getGraphql = (): Parameters<typeof graphqlHTTP>[0] => {
   const schemaDef = fs.readFileSync(
@@ -17,12 +18,7 @@ const getGraphql = (): Parameters<typeof graphqlHTTP>[0] => {
   return {
     schema,
     rootValue: {
-      getUser() {
-        return {
-          username: "Matthew",
-          authField: "private info!",
-        };
-      },
+      getUser: resolvers.getUserResolver,
     },
     graphiql: {
       headerEditorEnabled: true,
