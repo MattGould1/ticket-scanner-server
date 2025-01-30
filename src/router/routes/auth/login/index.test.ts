@@ -6,29 +6,30 @@ describe("auth", () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: "username",
+        email: "matthew@gould.com",
         password: "password",
       }),
     });
 
     const json = await result.json();
 
-    console.log(json);
+    expect(result.status).toBe(200);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    expect(json.token).toBeDefined();
   });
 
-  it("works", async () => {
-    const result = await fetch("http://localhost:3000/graphql", {
+  it("Cannot find the user so returns 401", async () => {
+    const result = await fetch("http://localhost:3000/auth/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        query: `query { getUser(id: "hello world") { username} }`,
+        email: "unknown@unknown.com",
+        password: "password",
       }),
     });
 
-    const json = await result.json();
-
-    console.log(json);
+    expect(result.status).toBe(401);
   });
 });

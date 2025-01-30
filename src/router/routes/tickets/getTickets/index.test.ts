@@ -1,4 +1,4 @@
-import getToken from "../../../../test/lib/getToken";
+import getToken from "../../../../__test__/lib/getToken";
 
 describe("tickets", () => {
   it("Gets tickets", async () => {

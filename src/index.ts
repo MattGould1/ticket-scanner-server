@@ -10,6 +10,8 @@ import { authRouter } from "./router/routes/auth";
 import mount from "koa-mount";
 import graphqlApp from "./graphql";
 import cors from "@koa/cors";
+import { UserModel } from "./database/models/user";
+import { MongoServerError } from "mongodb";
 
 const app = new Koa();
 
@@ -33,8 +35,29 @@ app.use(mount("/", graphqlApp));
 
 const port = 3000;
 
-app.listen(port, () => {
+app.listen(port, async () => {
   getMongoose();
+
+  /**
+   * Just for demo purposes, password is always "password"
+   */
+  try {
+    await UserModel.create({
+      name: "Matthew Gould",
+      email: "matthew@gould.com",
+    });
+  } catch (err: unknown) {
+    if (err instanceof MongoServerError && err.code === 11000) {
+      console.log("User already exists");
+
+      // await UserModel.deleteMany({ email: "matthew@gould.com" });
+      return;
+    }
+
+    throw err;
+  }
+
+  console.log(`Server running on http://localhost:${port}`);
   console.log(`Server running on http://localhost:${port}`);
 });
 

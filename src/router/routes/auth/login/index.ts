@@ -1,19 +1,35 @@
-import { RouterMiddlewareWithBody } from "../../../lib/handler";
+import { UserModel } from "src/database/models/user";
+import {
+  ContextWithBody,
+  RouterMiddlewareWithBody,
+} from "../../../lib/handler";
 import { generateToken } from "src/lib/jwt";
 
+const error401 = (ctx: ContextWithBody) => {
+  ctx.status = 401;
+  ctx.body = { message: "Invalid credentials" };
+};
+
 const loginHandler: RouterMiddlewareWithBody<{
-  username: string;
+  email: string;
   password: string;
 }> = async (ctx) => {
-  const { username, password } = ctx.request.body;
+  // @TODO Use zod for input validation
+  const { email, password } = ctx.request.body;
 
-  // Replace with your own authentication logic
-  if (username === "username" && password === "password") {
-    const token = generateToken({ username });
-    ctx.body = { token };
+  const user = await UserModel.findOne({ email });
+  if (user === null) {
+    error401(ctx);
+    return;
+  }
+
+  // Replace with actual authentication logic
+  if (password === "password") {
+    const _user = user.toJSON();
+    const token = generateToken(_user);
+    ctx.body = { token, user: _user };
   } else {
-    ctx.status = 401;
-    ctx.body = { message: "Invalid credentials" };
+    error401(ctx);
   }
 };
 
