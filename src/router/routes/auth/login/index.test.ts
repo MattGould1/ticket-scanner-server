@@ -1,15 +1,18 @@
 describe("auth", () => {
   it("Logs us in", async () => {
-    const result = await fetch("http://localhost:3000/auth/login", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "matthew@gould.com",
-        password: "password",
-      }),
-    });
+    const result = await fetch(
+      `${process.env.BASE_URL}:${process.env.PORT}/auth/login`,
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "matthew@gould.com",
+          password: "password",
+        }),
+      }
+    );
 
     const json = await result.json();
 
@@ -19,16 +22,19 @@ describe("auth", () => {
   });
 
   it("Cannot find the user so returns 401", async () => {
-    const result = await fetch("http://localhost:3000/auth/login", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "unknown@unknown.com",
-        password: "password",
-      }),
-    });
+    const result = await fetch(
+      `${process.env.BASE_URL}:${process.env.PORT}/auth/login`,
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "unknown@unknown.com",
+          password: "password",
+        }),
+      }
+    );
 
     expect(result.status).toBe(401);
   });

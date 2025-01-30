@@ -1,10 +1,9 @@
 import jwt from "jsonwebtoken";
 import { UserModelType } from "src/database/models/user";
+import environment from "../environment";
 
-// @TODO make this secret a env variable
-export const JWT_SECRET = "your_secret_key";
+export const JWT_SECRET = environment().JWT_SECRET;
 
-// @TODO make better types for the payload
 type TokenPayload = UserModelType;
 export const generateToken = (payload: TokenPayload): string => {
   return jwt.sign(payload, JWT_SECRET, { expiresIn: "1h" });

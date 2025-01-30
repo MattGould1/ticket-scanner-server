@@ -12,6 +12,7 @@ import graphqlApp from "./graphql";
 import cors from "@koa/cors";
 import { UserModel } from "./database/models/user";
 import { MongoServerError } from "mongodb";
+import environment from "./lib/environment";
 
 const app = new Koa();
 
@@ -33,9 +34,7 @@ app.use(authRouter.routes());
 
 app.use(mount("/", graphqlApp));
 
-const port = 3000;
-
-app.listen(port, async () => {
+app.listen(environment().PORT, async () => {
   getMongoose();
 
   /**
@@ -57,8 +56,9 @@ app.listen(port, async () => {
     throw err;
   }
 
-  console.log(`Server running on http://localhost:${port}`);
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(
+    `Server running on ${environment().BASE_URL}:${environment().PORT}`
+  );
 });
 
 export { router, app };

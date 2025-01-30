@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DocumentNode, print } from "graphql";
+import environment from "src/lib/environment";
 
 const doQuery = async ({
   query,
@@ -11,7 +12,7 @@ const doQuery = async ({
   token: string;
 }) => {
   const response = await axios.post(
-    "http://localhost:3000/graphql",
+    `${environment().BASE_URL}:${environment().PORT}/graphql`,
     {
       query: print(query),
       variables,

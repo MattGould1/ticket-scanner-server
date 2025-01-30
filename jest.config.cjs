@@ -31,6 +31,7 @@ const config = {
     "!**/test/fixture/**/*.[jt]s?(x)",
     "**/?(*.)+(spec|test).[tj]s?(x)",
   ],
+  setupFiles: ["<rootDir>/jest.setup.ts"],
 };
 
 module.exports = config;
