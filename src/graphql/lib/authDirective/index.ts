@@ -7,16 +7,18 @@ function authDirective(): {
   authDirectiveTypeDefs: string;
   authDirectiveTransformer: (schema: GraphQLSchema) => GraphQLSchema;
 } {
+  const directiveName = "auth";
   return {
-    authDirectiveTypeDefs: `directive @auth on FIELD_DEFINITION`,
+    authDirectiveTypeDefs: `directive @${directiveName} on FIELD_DEFINITION`,
     authDirectiveTransformer: (schema: GraphQLSchema) => {
       return mapSchema(schema, {
         [MapperKind["OBJECT_FIELD"]]: (fieldConfig, _fieldName, _typeName) => {
-          const authDirective = getDirective(schema, fieldConfig, "auth")?.[0];
-          console.log("authDirective", authDirective);
+          const authDirective = getDirective(
+            schema,
+            fieldConfig,
+            directiveName
+          )?.[0];
           if (authDirective) {
-            console.log("resolving field");
-
             const { resolve: originalResolve = defaultFieldResolver } =
               fieldConfig;
 
