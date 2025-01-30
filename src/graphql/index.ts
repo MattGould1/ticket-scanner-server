@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { createSchema, createYoga } from "graphql-yoga";
+import { createYoga } from "graphql-yoga";
 import Koa from "koa";
 import jwtAuthentication from "./middleware/jwtAuthentication";
 import resolvers from "./resolvers";
@@ -13,11 +13,20 @@ const buildGraphqlSchemaWithDirectives = () => {
     "utf8"
   );
 
+  const _authDirective = authDirective();
+
   let schema = makeExecutableSchema({
-    typeDefs: [authDirective().authDirectiveTypeDefs, schemaDef],
+    typeDefs: [_authDirective.authDirectiveTypeDefs, schemaDef],
+    resolvers: {
+      Query: {
+        getUser: resolvers.getUserResolver,
+        getEvents: resolvers.getEventsResolver,
+      },
+    },
   });
 
-  schema = authDirective().authDirectiveTransformer(schema);
+  schema = _authDirective.authDirectiveTransformer(schema);
+
   return schema;
 };
 
@@ -33,20 +42,11 @@ const yoga = createYoga<Koa.ParameterizedContext>({
       }
     `,
   },
-  schema: createSchema({
-    typeDefs: buildGraphqlSchemaWithDirectives(),
-    resolvers: {
-      Query: {
-        getUser: resolvers.getUserResolver,
-        getEvents: resolvers.getEventsResolver,
-      },
-    },
-  }),
+  schema: buildGraphqlSchemaWithDirectives(),
 });
 
 const graphqlApp = new Koa();
 
-// Apply multiple middleware to the GraphQL app
 graphqlApp.use(jwtAuthentication);
 graphqlApp.use(async (ctx) => {
   const response = await yoga.handleNodeRequestAndResponse(

@@ -4,7 +4,7 @@
 scalar DateTime
 
 type User {
-  username: String! @auth
+  username: String!
   teamId: String!
   teamName: String!
 }
@@ -33,4 +33,10 @@ type EventsWithPagination {
 type Query {
   getUser: User! @auth
   getEvents: EventsWithPagination! @auth
+}
+
+schema {
+  query: Query
+  # mutation: Mutation
+  # subscription: Subscription
 }

@@ -9,6 +9,12 @@ function authDirective(): {
 } {
   const directiveName = "auth";
   return {
+    // @TODO add roles?
+    /**
+     * directive @auth(
+     *   roles: [String!] = []
+     * ) on FIELD_DEFINITION
+     */
     authDirectiveTypeDefs: `directive @${directiveName} on FIELD_DEFINITION`,
     authDirectiveTransformer: (schema: GraphQLSchema) => {
       return mapSchema(schema, {
