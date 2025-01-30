@@ -29,7 +29,7 @@ app.use(router.routes());
 app.use(ticketsRouter.routes());
 app.use(authRouter.routes());
 
-app.use(mount("/graphql", graphqlApp));
+app.use(mount("/", graphqlApp));
 
 const port = 3000;
 

@@ -1,14 +1,14 @@
 import { GraphQLContext } from "src/graphql/types";
-import { Query, QueryGetUserArgs } from "src/graphql/types/graphql";
+import { Query } from "src/graphql/types/graphql";
 
 const getUserResolver = async (
-  args: QueryGetUserArgs,
-  context: GraphQLContext
+  _args: null,
+  _context: GraphQLContext
 ): Promise<Query["getUser"]> => {
-  console.log(args, context.user);
   return {
     username: "Matthew",
-    authField: "private info!",
+    teamId: "123",
+    teamName: "Checkout Page",
   };
 };
 

@@ -1,7 +1,8 @@
-class AuthenticationError extends Error {
+import { GraphQLError } from "graphql";
+
+class AuthenticationError extends GraphQLError {
   constructor() {
     super("Authentication required");
-    this.name = "AuthenticationError";
   }
 }
 

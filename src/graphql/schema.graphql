@@ -1,17 +1,36 @@
 # The @auth directive is used to mark fields that require authentication
 # When applied to a field, it ensures the user is authenticated before accessing that field
-directive @auth on FIELD_DEFINITION
+
+scalar DateTime
 
 type User {
-  username: String!
-  authField: String! @auth
+  username: String! @auth
+  teamId: String!
+  teamName: String!
 }
 
 type AuthThings {
   hidden: String!
 }
 
+type Event {
+  id: String!
+  teamId: String!
+  name: String!
+  date: DateTime!
+  venue: String
+  description: String
+  image: String
+}
+
+type EventsWithPagination {
+  events: [Event!]!
+  total: Int!
+  offset: Int
+  limit: Int
+}
+
 type Query {
-  getUser(id: ID!): User!
-  getAuthThings: AuthThings! @auth
+  getUser: User! @auth
+  getEvents: EventsWithPagination! @auth
 }

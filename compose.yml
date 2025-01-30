@@ -18,6 +18,8 @@ services:
       - "28017:28017"
     volumes:
       - mongodb_data:/data/db
+    logging:
+      driver: none
 
 volumes:
   mongodb_data:
