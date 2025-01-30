@@ -13,7 +13,7 @@ const loginHandler: RouterMiddlewareWithBody<{
     ctx.body = { token };
   } else {
     ctx.status = 401;
-    ctx.body = { error: "Invalid credentials" };
+    ctx.body = { message: "Invalid credentials" };
   }
 };
 

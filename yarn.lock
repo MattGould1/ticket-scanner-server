@@ -2645,6 +2645,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@koa/cors@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@koa/cors@npm:5.0.0"
+  dependencies:
+    vary: "npm:^1.1.2"
+  checksum: 10/3a0e32fbc422a5f9a41540ce3b7499d46073ddb0e4e851394a74bac5ecd0eaa1f24a8f189b7bd6a50c5863788ae6945c52d990edf99fdd2151a4404f266fe2e7
+  languageName: node
+  linkType: hard
+
 "@koa/router@npm:^13.1.0":
   version: 13.1.0
   resolution: "@koa/router@npm:13.1.0"
@@ -3001,6 +3010,15 @@ __metadata:
     "@types/koa-compose": "npm:*"
     "@types/node": "npm:*"
   checksum: 10/2be9dff1ef66bf15b037386c188893761a8fb46390a5e1d2a2031d9e1ba4473e40ddfbd625980a504bd804d7148b3e230c18e240503f33eac3b6e5e830645d30
+  languageName: node
+  linkType: hard
+
+"@types/koa__cors@npm:^5":
+  version: 5.0.0
+  resolution: "@types/koa__cors@npm:5.0.0"
+  dependencies:
+    "@types/koa": "npm:*"
+  checksum: 10/ad8e6a482f1bb0e357e0051faec328a75e2978a24065a953032d5dba58ac08edf5ca66b03059551f0faf9e085b15ee7892e6ab03c9500af4be8bd258965479c9
   languageName: node
   linkType: hard
 
@@ -8538,6 +8556,7 @@ __metadata:
     "@graphql-codegen/typescript-resolvers": "npm:^4.4.1"
     "@graphql-tools/utils": "npm:^10.7.2"
     "@jest/globals": "npm:29.7.0"
+    "@koa/cors": "npm:^5.0.0"
     "@koa/router": "npm:^13.1.0"
     "@tsconfig/node20": "npm:20.1.4"
     "@types/jest": "npm:29.5.14"
@@ -8545,6 +8564,7 @@ __metadata:
     "@types/koa": "npm:^2"
     "@types/koa-bodyparser": "npm:^4"
     "@types/koa-mount": "npm:^4"
+    "@types/koa__cors": "npm:^5"
     "@types/koa__router": "npm:^12.0.4"
     "@types/node": "npm:20.17.12"
     "@types/ws": "npm:^8"

@@ -9,9 +9,17 @@ import bodyParser from "koa-bodyparser";
 import { authRouter } from "./router/routes/auth";
 import mount from "koa-mount";
 import graphqlApp from "./graphql";
+import cors from "@koa/cors";
 
 const app = new Koa();
 
+app.use(
+  cors({
+    origin: "*",
+    allowHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(jwtErrorHandler);
 
 app.use(jwtAuthentication);

@@ -23,7 +23,7 @@ describe("auth", () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        query: "query { getUser { username} }",
+        query: `query { getUser(id: "hello world") { username} }`,
       }),
     });
 
