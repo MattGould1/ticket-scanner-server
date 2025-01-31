@@ -41,4 +41,20 @@ const GET_EVENT_ATTENDEES = gql`
   }
 `;
 
-export { GET_USER, GET_EVENTS, GET_EVENT_ATTENDEES };
+const VERIFY_EVENT_ATTENDEE = gql`
+  mutation verifyEventAttendee($eventId: String!, $eventAttendeeId: String!) {
+    verifyEventAttendee(eventId: $eventId, eventAttendeeId: $eventAttendeeId) {
+      eventAttendee {
+        id
+        name
+        email
+        phone
+        checkedInAt
+        ticketId
+      }
+      alreadyCheckedIn
+    }
+  }
+`;
+
+export { GET_USER, GET_EVENTS, GET_EVENT_ATTENDEES, VERIFY_EVENT_ATTENDEE };

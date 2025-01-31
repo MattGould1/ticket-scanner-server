@@ -58,8 +58,20 @@ type Query {
   ): EventAttendeesWithPagination! @auth
 }
 
+type EventAttendeeVerification {
+  eventAttendee: EventAttendee!
+  alreadyCheckedIn: Boolean!
+}
+
+type Mutation {
+  verifyEventAttendee(
+    eventId: String!
+    eventAttendeeId: String!
+  ): EventAttendeeVerification! @auth
+}
+
 schema {
   query: Query
-  # mutation: Mutation
+  mutation: Mutation
   # subscription: Subscription
 }

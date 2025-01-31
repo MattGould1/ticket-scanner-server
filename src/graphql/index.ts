@@ -3,7 +3,7 @@ import path from "path";
 import { createYoga } from "graphql-yoga";
 import Koa from "koa";
 import jwtAuthentication from "./middleware/jwtAuthentication";
-import resolvers from "./resolvers";
+import resolvers from "./resolvers/index";
 import authDirective from "./lib/authDirective";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 
@@ -22,6 +22,9 @@ const buildGraphqlSchemaWithDirectives = () => {
         getUser: resolvers.getUserResolver,
         getEvents: resolvers.getEventsResolver,
         getEventAttendees: resolvers.getEventAttendeesResolver,
+      },
+      Mutation: {
+        verifyEventAttendee: resolvers.verifyEventAttendeeResolver,
       },
     },
   });
