@@ -35,6 +35,10 @@ const buildGraphqlSchemaWithDirectives = () => {
 };
 
 const yoga = createYoga<Koa.ParameterizedContext>({
+  cors: {
+    origin: "*",
+    credentials: true,
+  },
   graphiql: {
     defaultQuery: `
       query {

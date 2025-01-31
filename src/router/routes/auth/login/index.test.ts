@@ -1,7 +1,7 @@
 describe("auth", () => {
   it("Logs us in", async () => {
     const result = await fetch(
-      `${process.env.BASE_URL}:${process.env.PORT}/auth/login`,
+      `${process.env.BASE_URL}:${process.env.PORT}/rest/auth/login`,
       {
         method: "post",
         headers: {
@@ -23,7 +23,7 @@ describe("auth", () => {
 
   it("Cannot find the user so returns 401", async () => {
     const result = await fetch(
-      `${process.env.BASE_URL}:${process.env.PORT}/auth/login`,
+      `${process.env.BASE_URL}:${process.env.PORT}/rest/auth/login`,
       {
         method: "post",
         headers: {
