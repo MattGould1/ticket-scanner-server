@@ -21,6 +21,7 @@ const buildGraphqlSchemaWithDirectives = () => {
       Query: {
         getUser: resolvers.getUserResolver,
         getEvents: resolvers.getEventsResolver,
+        getEventAttendees: resolvers.getEventAttendeesResolver,
       },
     },
   });

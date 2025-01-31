@@ -21,6 +21,7 @@ const getEventsResolver = async (
       return {
         ...event.toJSON(),
         teamId: event.teamId.toString(),
+        id: event._id.toString(),
       };
     }),
     total,

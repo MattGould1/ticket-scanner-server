@@ -4,7 +4,7 @@ import getToken from "../../../../__test__/lib/getToken";
 import { Query, QueryGetEventsArgs } from "src/graphql/types/graphql";
 
 describe("getEventsResolver", () => {
-  it("should return a user", async () => {
+  it("should work", async () => {
     const token = await getToken();
 
     const response = await doQuery<

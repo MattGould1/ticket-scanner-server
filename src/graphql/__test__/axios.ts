@@ -24,6 +24,10 @@ const doQuery = async <V = any, R = any>({
     }
   );
 
+  if ("errors" in response.data) {
+    console.log(response.data.errors);
+  }
+
   return response.data;
 };
 

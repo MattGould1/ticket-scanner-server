@@ -15,8 +15,6 @@ const getToken = async () => {
 
   const json = (await result.json()) as { token: string };
 
-  console.log(json);
-
   return json.token;
 };
 

@@ -27,8 +27,6 @@ type Event {
 type EventsWithPagination {
   events: [Event!]!
   total: Int!
-  offset: Int
-  limit: Int
 }
 
 input PaginationInput {
@@ -36,9 +34,28 @@ input PaginationInput {
   limit: Int
 }
 
+type EventAttendee {
+  id: String!
+  name: String!
+  email: String!
+  phone: String
+  ticketId: String!
+  customerSpecialRequest: String
+  checkedInAt: DateTime
+}
+
+type EventAttendeesWithPagination {
+  attendees: [EventAttendee!]!
+  total: Int!
+}
+
 type Query {
   getUser: User! @auth
   getEvents(pagination: PaginationInput): EventsWithPagination! @auth
+  getEventAttendees(
+    eventId: String!
+    pagination: PaginationInput
+  ): EventAttendeesWithPagination! @auth
 }
 
 schema {

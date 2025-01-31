@@ -14,6 +14,7 @@ import { UserModel } from "./database/models/user";
 import { MongoServerError, ObjectId } from "mongodb";
 import environment from "./lib/environment";
 import { EventModel } from "./database/models/event/event";
+import { EventAttendeeModel } from "./database/models/eventAttendee";
 
 const app = new Koa();
 
@@ -43,7 +44,8 @@ app.listen(environment().PORT, async () => {
    */
   try {
     const teamId = new ObjectId();
-    await EventModel.create({
+    const ticketId = new ObjectId();
+    const event = await EventModel.create({
       teamId,
       name: "Test Event",
       startDate: new Date(),
@@ -57,12 +59,20 @@ app.listen(environment().PORT, async () => {
       email: "matthew@gould.com",
       teamId,
     });
+    await EventAttendeeModel.create({
+      eventId: event.id,
+      name: "Matthew Gould",
+      email: "matthew@gould.com",
+      ticketId,
+      teamId,
+    });
   } catch (err: unknown) {
     if (err instanceof MongoServerError && err.code === 11000) {
       console.log("User already exists");
 
       // await UserModel.deleteMany({ email: "matthew@gould.com" });
       // await EventModel.deleteMany();
+      // await EventAttendeeModel.deleteMany();
       return;
     }
 
