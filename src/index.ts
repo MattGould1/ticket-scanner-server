@@ -1,6 +1,5 @@
 import Koa from "koa";
 import router from "./router/routes";
-import { ticketsRouter } from "./router/routes/tickets";
 import { getMongoose } from "./database";
 import jwtAuthentication, {
   jwtErrorHandler,
@@ -31,7 +30,6 @@ app.use(jwtAuthentication);
 app.use(bodyParser());
 
 app.use(router.routes());
-app.use(ticketsRouter.routes());
 app.use(authRouter.routes());
 
 app.use(mount("/", graphqlApp));
