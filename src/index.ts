@@ -11,8 +11,9 @@ import mount from "koa-mount";
 import graphqlApp from "./graphql";
 import cors from "@koa/cors";
 import { UserModel } from "./database/models/user";
-import { MongoServerError } from "mongodb";
+import { MongoServerError, ObjectId } from "mongodb";
 import environment from "./lib/environment";
+import { EventModel } from "./database/models/event/event";
 
 const app = new Koa();
 
@@ -41,15 +42,27 @@ app.listen(environment().PORT, async () => {
    * Just for demo purposes, password is always "password"
    */
   try {
+    const teamId = new ObjectId();
+    await EventModel.create({
+      teamId,
+      name: "Test Event",
+      startDate: new Date(),
+      endDate: new Date(),
+      venue: "Test Venue",
+      description: "Test Description",
+      image: "Test Image",
+    });
     await UserModel.create({
       name: "Matthew Gould",
       email: "matthew@gould.com",
+      teamId,
     });
   } catch (err: unknown) {
     if (err instanceof MongoServerError && err.code === 11000) {
       console.log("User already exists");
 
       // await UserModel.deleteMany({ email: "matthew@gould.com" });
+      // await EventModel.deleteMany();
       return;
     }
 

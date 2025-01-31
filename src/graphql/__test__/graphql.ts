@@ -8,4 +8,20 @@ const GET_USER = gql`
   }
 `;
 
-export { GET_USER };
+const GET_EVENTS = gql`
+  query getEvents($pagination: PaginationInput) {
+    getEvents(pagination: $pagination) {
+      events {
+        name
+        startDate
+        endDate
+        venue
+        description
+        image
+      }
+      total
+    }
+  }
+`;
+
+export { GET_USER, GET_EVENTS };

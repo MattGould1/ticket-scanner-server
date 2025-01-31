@@ -7,6 +7,7 @@ import { baseSchema, BaseSchemaType } from "../base";
 const UserSchema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
+  teamId: { type: Schema.ObjectId, required: true },
 }).add(baseSchema);
 
 const UserModel = model<UserModelType>("User", UserSchema);

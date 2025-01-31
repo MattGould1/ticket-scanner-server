@@ -1,15 +1,20 @@
-import mongoose from "mongoose";
+import { InferSchemaType, Schema, model } from "mongoose";
+import { baseSchema, BaseSchemaType } from "../../base";
 
-const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
-
-const Event = new Schema({
-  id: { type: ObjectId, required: true },
-  companyId: { type: ObjectId, required: true },
+// @TODO just a POC this data comes from CP actually
+const EventSchema = new Schema({
+  teamId: { type: Schema.ObjectId, required: true },
   name: { type: String, required: true },
   startDate: { type: Date, required: true },
   endDate: { type: Date, required: true },
-  seatAvailability: { type: Number },
-});
+  venue: { type: String },
+  description: { type: String },
+  image: { type: String },
+}).add(baseSchema);
 
-export default Event;
+const EventModel = model<EventModelType>("Event", EventSchema);
+
+export type EventModelInputType = InferSchemaType<typeof EventSchema>;
+export type EventModelType = EventModelInputType & BaseSchemaType;
+
+export { EventSchema, EventModel };

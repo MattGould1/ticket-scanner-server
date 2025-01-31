@@ -1,18 +1,18 @@
 import axios from "axios";
 import { DocumentNode, print } from "graphql";
-import environment from "src/lib/environment";
 
-const doQuery = async ({
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const doQuery = async <V = any, R = any>({
   query,
   variables,
   token,
 }: {
   query: DocumentNode;
-  variables?: any;
+  variables?: V;
   token: string;
-}) => {
-  const response = await axios.post(
-    `${environment().BASE_URL}:${environment().PORT}/graphql`,
+}): Promise<{ data: R }> => {
+  const response = await axios.post<{ data: R }>(
+    `${process.env.BASE_URL}:${process.env.PORT}/graphql`,
     {
       query: print(query),
       variables,

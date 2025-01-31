@@ -17,7 +17,8 @@ type Event {
   id: String!
   teamId: String!
   name: String!
-  date: DateTime!
+  startDate: DateTime!
+  endDate: DateTime!
   venue: String
   description: String
   image: String
@@ -30,9 +31,14 @@ type EventsWithPagination {
   limit: Int
 }
 
+input PaginationInput {
+  offset: Int
+  limit: Int
+}
+
 type Query {
   getUser: User! @auth
-  getEvents: EventsWithPagination! @auth
+  getEvents(pagination: PaginationInput): EventsWithPagination! @auth
 }
 
 schema {

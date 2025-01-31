@@ -1,21 +1,21 @@
-import environment from "src/lib/environment";
-
 const getToken = async () => {
   const result = await fetch(
-    `${environment().BASE_URL}:${environment().PORT}/auth/login`,
+    `${process.env.BASE_URL}:${process.env.PORT}/auth/login`,
     {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: "username",
+        email: "matthew@gould.com",
         password: "password",
       }),
     }
   );
 
   const json = (await result.json()) as { token: string };
+
+  console.log(json);
 
   return json.token;
 };
