@@ -1,6 +1,6 @@
 const getToken = async () => {
   const result = await fetch(
-    `${process.env.BASE_URL}:${process.env.PORT}/auth/login`,
+    `${process.env.BASE_URL}:${process.env.PORT}/rest/auth/login`,
     {
       method: "post",
       headers: {
