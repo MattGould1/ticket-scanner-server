@@ -72,14 +72,14 @@ app.listen(environment().PORT, async () => {
       // await UserModel.deleteMany({ email: "matthew@gould.com" });
       // await EventModel.deleteMany();
       // await EventAttendeeModel.deleteMany();
-      return;
+    } else {
+      throw err;
     }
-
-    throw err;
   }
 
   console.log(
-    `Server running on ${environment().BASE_URL}:${environment().PORT}`
+    `Server running on ${environment().BASE_URL}:${environment().PORT}\n`,
+    `External IP: http://${process.env.HOST_IP}:${environment().PORT}`
   );
 });
 

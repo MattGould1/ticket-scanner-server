@@ -9,7 +9,10 @@ services:
       - "3000:3000"
     volumes:
       - .:/app:rw
+    environment:
+      - HOST_IP=${HOST_IP}
     command: /bin/sh -c "yarn install && yarn dev"
+    
   mongodb:
     build:
       context: .
