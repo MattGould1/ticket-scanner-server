@@ -18,15 +18,7 @@ import { EventAttendeeModel } from "./database/models/eventAttendee";
 const app = new Koa();
 
 app.use(jwtErrorHandler);
-app.use(
-  mount(
-    "/rest",
-    cors({
-      origin: "*",
-      credentials: true,
-    })
-  )
-);
+app.use(mount("/rest", cors()));
 app.use(jwtAuthentication);
 app.use(bodyParser());
 
