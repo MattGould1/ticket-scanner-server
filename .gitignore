@@ -140,3 +140,4 @@ TODO
 .envrc
 
 src/graphql/types/graphql.ts
+certs/*

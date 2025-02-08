@@ -14,6 +14,9 @@ import { MongoServerError, ObjectId } from "mongodb";
 import environment from "./lib/environment";
 import { EventModel } from "./database/models/event/event";
 import { EventAttendeeModel } from "./database/models/eventAttendee";
+import * as https from "https";
+import * as fs from "fs";
+import * as path from "path";
 
 const app = new Koa();
 
@@ -27,52 +30,59 @@ app.use(authRouter.routes());
 
 app.use(mount("/", graphqlApp));
 
-app.listen(environment().PORT, async () => {
-  getMongoose();
+const sslOptions = {
+  key: fs.readFileSync(path.join(__dirname, "../certs/key.pem")),
+  cert: fs.readFileSync(path.join(__dirname, "../certs/cert.pem")),
+};
 
-  /**
-   * Just for demo purposes, password is always "password"
-   */
-  try {
-    const teamId = new ObjectId();
-    const ticketId = new ObjectId();
-    const event = await EventModel.create({
-      teamId,
-      name: "Test Event",
-      startDate: new Date(),
-      endDate: new Date(),
-      venue: "Test Venue",
-      description: "Test Description",
-      image: "Test Image",
-    });
-    await UserModel.create({
-      name: "Matthew Gould",
-      email: "matthew@gould.com",
-      teamId,
-    });
-    await EventAttendeeModel.create({
-      eventId: event.id,
-      name: "Matthew Gould",
-      email: "matthew@gould.com",
-      ticketId,
-      teamId,
-    });
-  } catch (err: unknown) {
-    if (err instanceof MongoServerError && err.code === 11000) {
-      console.log("User already exists");
+https
+  .createServer(sslOptions, app.callback())
+  .listen(environment().PORT, async () => {
+    getMongoose();
 
-      // await UserModel.deleteMany({ email: "matthew@gould.com" });
-      // await EventModel.deleteMany();
-      // await EventAttendeeModel.deleteMany();
-    } else {
-      throw err;
+    /**
+     * Just for demo purposes, password is always "password"
+     */
+    try {
+      const teamId = new ObjectId();
+      const ticketId = new ObjectId();
+      const event = await EventModel.create({
+        teamId,
+        name: "Test Event",
+        startDate: new Date(),
+        endDate: new Date(),
+        venue: "Test Venue",
+        description: "Test Description",
+        image: "Test Image",
+      });
+      await UserModel.create({
+        name: "Matthew Gould",
+        email: "matthew@gould.com",
+        teamId,
+      });
+      await EventAttendeeModel.create({
+        eventId: event.id,
+        name: "Matthew Gould",
+        email: "matthew@gould.com",
+        ticketId,
+        teamId,
+      });
+    } catch (err: unknown) {
+      if (err instanceof MongoServerError && err.code === 11000) {
+        console.log("User already exists");
+
+        // await UserModel.deleteMany({ email: "matthew@gould.com" });
+        // await EventModel.deleteMany();
+        // await EventAttendeeModel.deleteMany();
+      } else {
+        throw err;
+      }
     }
-  }
 
-  console.log(
-    `Server running on ${environment().BASE_URL}:${environment().PORT}\n`,
-    `External IP: http://${process.env.HOST_IP}:${environment().PORT}`
-  );
-});
+    console.log(
+      `Server running on https://localhost:${environment().PORT}\n`,
+      `External IP: https://${process.env.HOST_IP}:${environment().PORT}`
+    );
+  });
 
 export { router, app };
